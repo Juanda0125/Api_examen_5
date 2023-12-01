@@ -15,6 +15,7 @@ const jwt = require('jsonwebtoken')
 
 
 //Método GET de la API
+
 const proyectoGet = async(req, res = response) =>{
     //const {nombre} = req.query //Desestructuración
     const {id, numeroIntegrantes} = req.query;
@@ -43,7 +44,43 @@ const proyectoGet = async(req, res = response) =>{
 }
 
 
+
+
 //Método POST de la api
+const proyectoPost = async (req, res) => {
+  let mensaje = 'Inserción exitosa';
+  let token = '';
+
+  const { id_proyecto } = req.body;
+
+  try {
+    const response = await fetch('https://www.datos.gov.co/resource/mcec-87by.json');
+    const data = await response.json();
+    
+    const valorDolar = parseFloat(data[0].valor);
+
+    const proyecto = new Proyecto({ ...req.body, valorDolar });
+
+    await proyecto.save();
+
+    if (id_proyecto !== '') {
+      token = await generarJWT(id_proyecto);
+      res.cookie('token', token);
+
+      mensaje += (', el token es: ' + token);
+    }
+  } catch (error) {
+    mensaje = 'Error en la inserción';
+    console.error(error);
+  }
+
+  res.json({
+    msg: mensaje,
+  });
+};
+
+
+/*
 const proyectoPost = async(req, res) => {
     let mensaje = 'Insercion exitosa'
 
@@ -73,8 +110,8 @@ const proyectoPost = async(req, res) => {
         msg: mensaje
     })
 }
+*/
 
-//Juan
 
 //Modifcación
 const proyectoPut = async(req, res) => {
