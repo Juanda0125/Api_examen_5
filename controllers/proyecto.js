@@ -47,6 +47,7 @@ const proyectoGet = async(req, res = response) =>{
 
 
 //Método POST de la api
+/*
 const proyectoPost = async (req, res) => {
   let mensaje = 'Inserción exitosa';
   let token = '';
@@ -78,9 +79,10 @@ const proyectoPost = async (req, res) => {
     msg: mensaje,
   });
 };
+*/
 
 
-/*
+
 const proyectoPost = async(req, res) => {
     let mensaje = 'Insercion exitosa'
 
@@ -110,7 +112,7 @@ const proyectoPost = async(req, res) => {
         msg: mensaje
     })
 }
-*/
+
 
 
 //Modifcación
