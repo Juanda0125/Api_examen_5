@@ -84,8 +84,7 @@ const proyectoPut = async(req, res) => {
     let mensaje = "Modificación exitosa"
 
     try {
-        await Proyecto.updateMany({_id: _id}, {$set: {
-            id: id,
+        await Proyecto.updateMany({id: id}, {$set: {
             nombre: nombre,
             horasDedicadas: horasDedicadas,
             valorProyecto: valorProyecto,
