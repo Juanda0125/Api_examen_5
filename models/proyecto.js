@@ -29,6 +29,12 @@ const ProyectoSchema = Schema({
         required: [true, 'el precio es obligatorio'],
         minlength: [1, 'Debe tener mínimo 3 caracteres']
         //maxlength:  [7, 'Debe tener máximo 3 caracteres']
+    },
+    valorDolar: {
+        type: Number,
+        required: [true, 'el precio es obligatorio'],
+        minlength: [1, 'Debe tener mínimo 3 caracteres']
+        //maxlength:  [7, 'Debe tener máximo 3 caracteres']
     }
 
 
